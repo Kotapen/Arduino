@@ -1,0 +1,34 @@
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int bright = A0;
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+double bright1 = 0;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+  // set up the LCD's number of columns and rows:
+  Serial.begin(9600);
+  pinMode(bright, INPUT);// initializes the bright as an input
+  lcd.begin(16, 2);
+  // Print a message to the LCD.
+  bright1= analogRead(bright);// Reads the analog brughtness
+  
+  lcd.setCursor(0, 0);
+  lcd.print("Surname: NYONI T.C ");// Reads the suname and initials on the first line
+  lcd.setCursor(0, 2);
+  lcd.print("Student No:219142122");// Reads the student number on the second line
+   lcd.setCursor(20, 16);
+  
+  lcd.print("Brightness: ");//shows the brightness on the LCD
+  //
+  lcd.print(bright1);
+  delay(1500);// delays the brightness by a division of 10
+ 
+}
+
+void loop(){
+ setup();
+  }
